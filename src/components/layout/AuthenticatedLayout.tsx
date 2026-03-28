@@ -149,7 +149,7 @@ export default function AuthenticatedLayout({
     <div className="min-h-screen bg-surface-dark">
       <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} menuItems={menuItems} />
       <div className="lg:ml-[280px]">
-        <header className="h-20 px-6 flex items-center justify-between border-b border-glass-border bg-surface-dark/50 backdrop-blur-xl sticky top-0 z-30">
+        <header className="min-h-[3.5rem] sm:h-20 px-4 sm:px-6 py-3 sm:py-0 flex items-center justify-between gap-2 border-b border-glass-border bg-surface-dark/50 backdrop-blur-xl sticky top-0 z-30 pt-[max(0.75rem,env(safe-area-inset-top))] sm:pt-0">
           {headerSlot ? (
             headerSlot({ onMenuClick: () => setSidebarOpen(true) })
           ) : (
@@ -174,7 +174,7 @@ export default function AuthenticatedLayout({
             </>
           )}
         </header>
-        <main className="p-6">{children}</main>
+        <main className="p-4 sm:p-6 max-w-[100vw] overflow-x-hidden pb-[max(1.5rem,env(safe-area-inset-bottom))]">{children}</main>
       </div>
     </div>
   )

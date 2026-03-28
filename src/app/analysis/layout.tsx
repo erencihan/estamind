@@ -19,21 +19,23 @@ const analysisMenuItems: MenuItemConfig[] = [
 function AnalysisHeader({ onMenuClick }: HeaderSlotProps) {
   return (
     <>
-      <div className="flex items-center gap-4 flex-1 min-w-0">
+      <div className="flex items-center gap-2 sm:gap-4 flex-1 min-w-0">
         <button
           onClick={onMenuClick}
-          className="lg:hidden p-2 rounded-lg hover:bg-white/5 transition-colors flex-shrink-0"
+          className="lg:hidden p-2 rounded-lg hover:bg-white/5 transition-colors flex-shrink-0 touch-manipulation"
+          type="button"
+          aria-label="Menüyü aç"
         >
           <Menu className="w-6 h-6" />
         </button>
-        <div className="hidden md:flex items-center gap-2 px-4 py-2 bg-surface-card rounded-xl">
-          <Search className="w-4 h-4 text-gray-500" />
+        <div className="flex flex-1 min-w-0 md:max-w-md items-center gap-2 px-3 sm:px-4 py-2 bg-surface-card rounded-xl">
+          <Search className="w-4 h-4 text-gray-500 shrink-0" />
           <input
-            type="text"
+            type="search"
             placeholder="İlan ara..."
-            className="bg-transparent border-none outline-none text-sm w-64 placeholder:text-gray-500"
+            className="bg-transparent border-none outline-none text-sm w-full min-w-0 placeholder:text-gray-500"
           />
-          <kbd className="px-2 py-1 text-xs bg-primary rounded text-gray-500">⌘K</kbd>
+          <kbd className="hidden lg:inline px-2 py-1 text-xs bg-primary rounded text-gray-500 shrink-0">⌘K</kbd>
         </div>
       </div>
       <div className="flex items-center gap-3 flex-shrink-0">

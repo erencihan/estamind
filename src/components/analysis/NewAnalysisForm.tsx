@@ -42,14 +42,14 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
   } = form
 
   return (
-    <main className="min-h-screen py-24 px-6">
-      <div className="max-w-3xl mx-auto">
+    <main className="min-h-screen py-20 sm:py-24 px-4 sm:px-6">
+      <div className="max-w-3xl mx-auto w-full min-w-0">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-8"
         >
-          <h1 className="text-3xl font-outfit font-bold mb-2">
+          <h1 className="text-2xl sm:text-3xl font-outfit font-bold mb-2">
             Yeni <span className="gradient-text">Emlak Analizi</span>
           </h1>
           <p className="text-gray-400">
@@ -57,31 +57,31 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
           </p>
         </motion.div>
 
-        <div className="flex items-center justify-center gap-4 mb-8">
+        <div className="flex items-center justify-center gap-1 sm:gap-4 mb-8 overflow-x-auto pb-1">
           {[1, 2, 3].map(step => (
-            <div key={step} className="flex items-center">
-              <div className={`w-10 h-10 rounded-full flex items-center justify-center font-semibold ${
+            <div key={step} className="flex items-center shrink-0">
+              <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-full flex items-center justify-center text-sm sm:text-base font-semibold ${
                 1 >= step ? 'bg-accent text-primary' : 'bg-primary-light text-gray-500'
               }`}>
                 {step}
               </div>
               {step < 3 && (
-                <div className={`w-16 h-1 mx-2 ${1 > step ? 'bg-accent' : 'bg-primary-light'}`} />
+                <div className={`w-8 sm:w-16 h-1 mx-1.5 sm:mx-2 ${1 > step ? 'bg-accent' : 'bg-primary-light'}`} />
               )}
             </div>
           ))}
         </div>
 
         <form className="space-y-4">
-          <div className="glass-card rounded-3xl p-6">
+          <div className="glass-card rounded-3xl p-4 sm:p-6">
             <h3 className="font-outfit font-semibold mb-4">Mülk Türü</h3>
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
               {propertyTypes.map(type => (
                 <button
                   key={type.value}
                   type="button"
                   onClick={() => setFormData(prev => ({ ...prev, property_type: type.value }))}
-                  className={`p-4 rounded-xl border text-center transition-all ${
+                  className={`p-3 sm:p-4 rounded-xl border text-center transition-all touch-manipulation ${
                     formData.property_type === type.value
                       ? 'border-accent bg-accent/10 text-accent'
                       : 'border-glass-border text-gray-400 hover:border-gray-500'
@@ -122,7 +122,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
             </div>
           </div>
 
-          <div className="glass-card rounded-3xl p-6">
+          <div className="glass-card rounded-3xl p-4 sm:p-6">
             <h3 className="font-outfit font-semibold mb-4">
               Temel Bilgiler
             </h3>
@@ -245,7 +245,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
             </div>
           </div>
 
-          <div className="glass-card rounded-3xl p-6">
+          <div className="glass-card rounded-3xl p-4 sm:p-6">
             <h3 className="font-outfit font-semibold mb-4">
               Bina Detayları
             </h3>
@@ -311,7 +311,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
             </div>
           </div>
 
-          <div className="glass-card rounded-3xl p-6">
+          <div className="glass-card rounded-3xl p-4 sm:p-6">
             <h3 className="font-outfit font-semibold mb-4">
               Özellikler
             </h3>
@@ -351,7 +351,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
             </div>
           </div>
 
-          <div className="glass-card rounded-3xl p-6">
+          <div className="glass-card rounded-3xl p-4 sm:p-6">
             <h3 className="font-outfit font-semibold mb-4">Mevcut Fiyat <span className="text-error">*</span></h3>
             <div className="relative">
               <input
@@ -372,7 +372,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
             </p>
           </div>
 
-          <div className="glass-card rounded-3xl p-6">
+          <div className="glass-card rounded-3xl p-4 sm:p-6">
             <h3 className="font-outfit font-semibold mb-4 flex items-center gap-2">
               <Camera className="w-5 h-5 text-accent" />
               İlan Fotoğrafları (Opsiyonel)
@@ -413,7 +413,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
                 <p className="text-sm text-gray-400 mb-2">
                   Yüklenen fotoğraflar ({uploadedImages.length})
                 </p>
-                <div className="grid grid-cols-4 gap-2">
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {uploadedImages.map((img, index) => (
                     <div key={index} className="relative group">
                       <img

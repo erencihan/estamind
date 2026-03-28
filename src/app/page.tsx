@@ -72,17 +72,17 @@ function FloatingOrbs() {
 function Navbar() {
   return (
     <motion.nav 
-      className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
+      className="fixed top-0 left-0 right-0 z-50 px-3 sm:px-6 py-3 sm:py-4 pt-[max(0.75rem,env(safe-area-inset-top))]"
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.6 }}
     >
-      <div className="max-w-7xl mx-auto glass rounded-2xl px-6 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-warning flex items-center justify-center">
-            <Brain className="w-6 h-6 text-primary" />
+      <div className="max-w-7xl mx-auto glass rounded-2xl px-3 sm:px-6 py-2.5 sm:py-3 flex flex-wrap items-center justify-between gap-y-2 gap-x-3">
+        <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+          <div className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-xl bg-gradient-to-br from-accent to-warning flex items-center justify-center">
+            <Brain className="w-5 h-5 sm:w-6 sm:h-6 text-primary" />
           </div>
-          <span className="text-xl font-outfit font-bold text-white">Esta<span className="text-accent">Mind</span></span>
+          <span className="text-lg sm:text-xl font-outfit font-bold text-white truncate">Esta<span className="text-accent">Mind</span></span>
         </div>
         
         <div className="hidden md:flex items-center gap-8">
@@ -91,9 +91,9 @@ function Navbar() {
           <a href="#demo" className="text-gray-300 hover:text-white transition-colors">Nasıl çalışır</a>
         </div>
 
-        <div className="flex items-center gap-3">
-          <a href="/login" className="btn-secondary text-sm px-4 py-2">Giriş Yap</a>
-          <a href="/register" className="btn-primary text-sm px-4 py-2">Kayıt Ol</a>
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0 ml-auto sm:ml-0">
+          <a href="/login" className="btn-secondary text-xs sm:text-sm px-3 sm:px-4 py-2 whitespace-nowrap">Giriş Yap</a>
+          <a href="/register" className="btn-primary text-xs sm:text-sm px-3 sm:px-4 py-2 whitespace-nowrap">Kayıt Ol</a>
         </div>
       </div>
     </motion.nav>
@@ -102,7 +102,7 @@ function Navbar() {
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center pt-24 pb-12 px-6">
+    <section className="relative min-h-screen flex items-center justify-center pt-28 sm:pt-24 pb-12 px-4 sm:px-6">
       <FloatingOrbs />
       
       <motion.div 
@@ -120,7 +120,7 @@ function Hero() {
 
         <motion.h1 
           variants={fadeInUp}
-          className="text-5xl md:text-7xl font-outfit font-bold mb-6 leading-tight"
+          className="text-4xl sm:text-5xl md:text-7xl font-outfit font-bold mb-6 leading-tight px-1"
         >
           Bölgenizdeki en{' '}
           <span className="gradient-text">akıllı emlakçı</span>{' '}
@@ -129,14 +129,14 @@ function Hero() {
 
         <motion.p 
           variants={fadeInUp}
-          className="text-xl text-gray-400 mb-10 max-w-2xl mx-auto"
+          className="text-base sm:text-xl text-gray-400 mb-10 max-w-2xl mx-auto px-1"
         >
           Mülk bilgisi veya ilan linki girin, yapay zeka saniyeler içinde fiyat ve strateji önerisi sunsun.
         </motion.p>
 
         <motion.div 
           variants={fadeInUp}
-          className="flex items-center justify-center gap-8 text-gray-500 text-sm mb-16"
+          className="flex flex-col sm:flex-row flex-wrap items-center justify-center gap-4 sm:gap-8 text-gray-500 text-xs sm:text-sm mb-16"
         >
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-accent" />
@@ -158,7 +158,7 @@ function Hero() {
 
 function DemoWidget() {
   return (
-    <section id="demo" className="py-20 px-6">
+    <section id="demo" className="py-12 sm:py-20 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           className="text-center mb-12"
@@ -200,7 +200,7 @@ function DemoWidget() {
         </motion.div>
 
         <motion.div 
-          className="glass-card rounded-3xl p-8"
+          className="glass-card rounded-3xl p-4 sm:p-8"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -208,13 +208,13 @@ function DemoWidget() {
         >
           <div className="grid md:grid-cols-3 gap-8">
             <div className="md:col-span-2 space-y-6">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-accent/20 to-warning/20 flex items-center justify-center">
-                  <Building2 className="w-8 h-8 text-accent" />
+              <div className="flex flex-col sm:flex-row sm:items-center gap-4 mb-6">
+                <div className="w-14 h-14 sm:w-16 sm:h-16 shrink-0 rounded-2xl bg-gradient-to-br from-accent/20 to-warning/20 flex items-center justify-center">
+                  <Building2 className="w-7 h-7 sm:w-8 sm:h-8 text-accent" />
                 </div>
-                <div>
-                  <h3 className="text-xl font-outfit font-semibold">Kadıköy, İstanbul — Caferağa Mah.</h3>
-                  <p className="text-gray-400 text-sm">3+1 Daire • 125 m² • 2018 Bina • Asansörlü • Deniz Manzarası</p>
+                <div className="min-w-0">
+                  <h3 className="text-lg sm:text-xl font-outfit font-semibold break-words">Kadıköy, İstanbul — Caferağa Mah.</h3>
+                  <p className="text-gray-400 text-sm break-words">3+1 Daire • 125 m² • 2018 Bina • Asansörlü • Deniz Manzarası</p>
                 </div>
               </div>
 
@@ -223,10 +223,10 @@ function DemoWidget() {
                   <span className="text-gray-400">Önerilen Fiyat Aralığı</span>
                   <TrendingUp className="w-5 h-5 text-success" />
                 </div>
-                <div className="flex items-end gap-4">
-                  <span className="text-3xl font-mono font-bold text-success">₺4.2M</span>
-                  <span className="text-gray-500 mb-1">-</span>
-                  <span className="text-3xl font-mono font-bold text-white">₺4.8M</span>
+                <div className="flex flex-wrap items-end gap-2 sm:gap-4">
+                  <span className="text-2xl sm:text-3xl font-mono font-bold text-success">₺4.2M</span>
+                  <span className="text-gray-500 mb-1 hidden sm:inline">-</span>
+                  <span className="text-2xl sm:text-3xl font-mono font-bold text-white">₺4.8M</span>
                 </div>
                 <div className="mt-4 h-2 bg-primary rounded-full overflow-hidden">
                   <motion.div 
@@ -239,16 +239,16 @@ function DemoWidget() {
                 <p className="text-xs text-gray-500 mt-2">Bölge ortalamasının %12 üzerinde • m² başı ₺33.600–₺38.400</p>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-surface-card rounded-2xl p-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-surface-card rounded-2xl p-4 sm:p-5">
                   <div className="flex items-center gap-2 mb-3">
-                    <Clock className="w-4 h-4 text-accent" />
+                    <Clock className="w-4 h-4 shrink-0 text-accent" />
                     <span className="text-sm text-gray-400">Tahmini Satış Süresi</span>
                   </div>
                   <div className="font-semibold text-lg">18–24 gün</div>
                   <p className="text-xs text-gray-500 mt-1">Bölgede benzer ilanlar ortalama 21 günde satıldı</p>
                 </div>
-                <div className="bg-surface-card rounded-2xl p-5">
+                <div className="bg-surface-card rounded-2xl p-4 sm:p-5">
                   <div className="flex items-center gap-2 mb-3">
                     <FileText className="w-4 h-4 text-accent" />
                     <span className="text-sm text-gray-400">Karşılaştırılan İlan</span>
@@ -258,8 +258,8 @@ function DemoWidget() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-surface-card rounded-2xl p-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="bg-surface-card rounded-2xl p-4 sm:p-5">
                   <div className="flex items-center gap-2 mb-3">
                     <Users className="w-4 h-4 text-accent" />
                     <span className="text-sm text-gray-400">Potansiyel Alıcı</span>
@@ -270,7 +270,7 @@ function DemoWidget() {
                   </div>
                   <span className="text-xs text-accent mt-1 block">%85 olasılık • Okul ve ulaşım öncelikli</span>
                 </div>
-                <div className="bg-surface-card rounded-2xl p-5">
+                <div className="bg-surface-card rounded-2xl p-4 sm:p-5">
                   <div className="flex items-center gap-2 mb-3">
                     <Target className="w-4 h-4 text-blue-400" />
                     <span className="text-sm text-gray-400">Yatırımcı Tipi</span>
@@ -337,11 +337,11 @@ function DemoWidget() {
             </div>
           </div>
 
-          <div className="mt-8 pt-6 border-t border-glass-border flex flex-wrap items-center justify-between gap-4">
-            <div className="flex items-center gap-2 text-gray-400 text-sm">
-              <Lightbulb className="w-4 h-4 text-accent" />
-              <span>İlan başlığınızı "Sahile 5 Dakika" yerine</span>
-              <span className="text-accent font-semibold">"Şehrin Sessiz Vahası"</span>
+          <div className="mt-8 pt-6 border-t border-glass-border flex flex-col sm:flex-row flex-wrap items-start sm:items-center justify-between gap-4">
+            <div className="flex flex-wrap items-center gap-x-2 gap-y-1 text-gray-400 text-xs sm:text-sm min-w-0">
+              <Lightbulb className="w-4 h-4 shrink-0 text-accent" />
+              <span className="break-words">İlan başlığınızı &quot;Sahile 5 Dakika&quot; yerine</span>
+              <span className="text-accent font-semibold break-words">&quot;Şehrin Sessiz Vahası&quot;</span>
               <span>yaparsanız</span>
             </div>
             <div className="flex items-center gap-2">
@@ -350,12 +350,12 @@ function DemoWidget() {
             </div>
           </div>
 
-          <div className="mt-6 p-5 rounded-2xl bg-gradient-to-r from-accent/15 to-warning/15 border border-accent/20 flex flex-wrap items-center justify-between gap-4">
-            <div>
+          <div className="mt-6 p-4 sm:p-5 rounded-2xl bg-gradient-to-r from-accent/15 to-warning/15 border border-accent/20 flex flex-col sm:flex-row flex-wrap items-stretch sm:items-center justify-between gap-4">
+            <div className="min-w-0">
               <p className="font-semibold text-white mb-1">Emeklerinizin karşılığını alın</p>
               <p className="text-sm text-gray-400">Her müşteriye böyle bir rapor sunun; daha hızlı satış, daha yüksek komisyon.</p>
             </div>
-            <a href="/register" className="btn-primary flex items-center gap-2 px-6 py-3 rounded-xl font-semibold whitespace-nowrap">
+            <a href="/register" className="btn-primary flex items-center justify-center gap-2 px-6 py-3 rounded-xl font-semibold whitespace-nowrap shrink-0 w-full sm:w-auto">
               Hemen Başla
               <ArrowRight className="w-4 h-4" />
             </a>
@@ -401,7 +401,7 @@ function Features() {
   ]
 
   return (
-    <section id="features" className="py-20 px-6">
+    <section id="features" className="py-12 sm:py-20 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           className="text-center mb-16"
@@ -490,7 +490,7 @@ function Pricing() {
   ]
 
   return (
-    <section id="pricing" className="py-20 px-6">
+    <section id="pricing" className="py-12 sm:py-20 px-4 sm:px-6">
       <div className="max-w-6xl mx-auto">
         <motion.div 
           className="text-center mb-16"
@@ -559,7 +559,7 @@ function Pricing() {
 
 function Footer() {
   return (
-    <footer className="py-12 px-6 border-t border-glass-border">
+    <footer className="py-10 sm:py-12 px-4 sm:px-6 pb-[max(2.5rem,env(safe-area-inset-bottom))] border-t border-glass-border">
       <div className="max-w-6xl mx-auto">
         <div className="grid md:grid-cols-4 gap-8 mb-8">
           <div>

@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Outfit, DM_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
@@ -14,6 +14,12 @@ export const metadata: Metadata = {
   keywords: 'emlak, AI, analiz, fiyatlandırma, gayrimenkul, property, real estate',
 }
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  themeColor: '#0C1222',
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -21,7 +27,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="tr" className={`${outfit.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased min-h-[100dvh] overflow-x-hidden">
         <Providers>
           {children}
         </Providers>

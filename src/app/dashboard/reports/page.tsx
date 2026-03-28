@@ -216,10 +216,10 @@ EstaMind
         ))}
       </div>
 
-      <div className="flex gap-2 border-b border-glass-border">
+      <div className="flex gap-2 border-b border-glass-border overflow-x-auto -mx-1 px-1 pb-0.5">
         <button
           onClick={() => setActiveTab('active')}
-          className={`px-4 py-3 font-medium transition-colors relative ${
+          className={`px-3 sm:px-4 py-3 font-medium transition-colors relative shrink-0 whitespace-nowrap touch-manipulation ${
             activeTab === 'active' 
               ? 'text-accent' 
               : 'text-gray-400 hover:text-white'
@@ -239,7 +239,7 @@ EstaMind
         </button>
         <button
           onClick={() => setActiveTab('deleted')}
-          className={`px-4 py-3 font-medium transition-colors relative ${
+          className={`px-3 sm:px-4 py-3 font-medium transition-colors relative shrink-0 whitespace-nowrap touch-manipulation ${
             activeTab === 'deleted' 
               ? 'text-error' 
               : 'text-gray-400 hover:text-white'
@@ -272,11 +272,11 @@ EstaMind
             />
           </div>
           {activeTab === 'active' && (
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3 min-w-0">
               <select 
                 value={selectedType}
                 onChange={(e) => setSelectedType(e.target.value)}
-                className="input-glass"
+                className="input-glass w-full sm:w-auto min-w-0"
               >
                 {reportTypes.map(type => (
                   <option key={type.value} value={type.value}>{type.label}</option>
@@ -285,7 +285,7 @@ EstaMind
               <select 
                 value={dateRange}
                 onChange={(e) => setDateRange(e.target.value)}
-                className="input-glass"
+                className="input-glass w-full sm:w-auto min-w-0"
               >
                 <option value="all">Tüm Zamanlar</option>
                 <option value="week">Bu Hafta</option>

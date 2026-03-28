@@ -38,21 +38,21 @@ export function AnalysisResultsView({
   saveReportToStorage,
 }: AnalysisResultsViewProps) {
   return (
-      <main className="min-h-screen py-24 px-6">
-        <div className="max-w-4xl mx-auto">
+      <main className="min-h-screen py-20 sm:py-24 px-4 sm:px-6">
+        <div className="max-w-4xl mx-auto w-full min-w-0">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="glass-card rounded-3xl p-8"
+            className="glass-card rounded-3xl p-4 sm:p-8"
           >
-            <div className="flex items-center justify-between mb-8">
-              <div>
-                <h1 className="text-2xl font-outfit font-bold">Analiz Sonuçları</h1>
-                <p className="text-gray-400">{formData.property_type} • {formData.city} / {formData.district}</p>
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-8">
+              <div className="min-w-0">
+                <h1 className="text-xl sm:text-2xl font-outfit font-bold">Analiz Sonuçları</h1>
+                <p className="text-gray-400 text-sm sm:text-base break-words">{formData.property_type} • {formData.city} / {formData.district}</p>
               </div>
               <button 
                 onClick={() => setShowResults(false)}
-                className="btn-secondary"
+                className="btn-secondary w-full sm:w-auto shrink-0 touch-manipulation"
               >
                 Yeni Analiz
               </button>
@@ -131,18 +131,18 @@ export function AnalysisResultsView({
                   <Brain className="w-5 h-5 text-accent" />
                   <span className="text-gray-400">Önerilen Fiyat</span>
                 </div>
-                <div className="flex items-end gap-3">
-                  <span className="text-4xl font-mono font-bold text-success">
+                <div className="flex flex-wrap items-end gap-2 sm:gap-3">
+                  <span className="text-3xl sm:text-4xl font-mono font-bold text-success">
                     ₺{(analysisResults.suggestedPriceMin / 1000000).toFixed(1)}M
                   </span>
-                  <span className="text-gray-500 mb-1">-</span>
-                  <span className="text-4xl font-mono font-bold text-white">
+                  <span className="text-gray-500 mb-1 hidden sm:inline">-</span>
+                  <span className="text-3xl sm:text-4xl font-mono font-bold text-white">
                     ₺{(analysisResults.suggestedPriceMax / 1000000).toFixed(1)}M
                   </span>
                 </div>
-                <div className="mt-4 flex items-center justify-between text-sm">
-                  <span className="text-gray-400">m² başına: ₺{analysisResults.pricePerSqm.toLocaleString()}</span>
-                  <span className="text-success">Güven: %{analysisResults.confidenceScore}</span>
+                <div className="mt-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between text-sm">
+                  <span className="text-gray-400 break-all">m² başına: ₺{analysisResults.pricePerSqm.toLocaleString()}</span>
+                  <span className="text-success shrink-0">Güven: %{analysisResults.confidenceScore}</span>
                 </div>
               </div>
 

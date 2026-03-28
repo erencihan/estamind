@@ -81,7 +81,7 @@ export default function RegisterPage() {
         </div>
 
         {/* Register Form */}
-        <div className="glass-card rounded-3xl p-8">
+        <div className="glass-card rounded-3xl p-5 sm:p-8">
           <h2 className="text-xl font-outfit font-semibold mb-6 text-center">Kayıt Ol</h2>
           
           {error && (
