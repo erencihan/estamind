@@ -160,6 +160,8 @@ Detaylı tipler için: [`src/types/database.ts`](src/types/database.ts)
 
 Production’da hata ayıklama ve refaktör için özet: [`docs/KOD_YAPISI_VE_BAKIM.md`](docs/KOD_YAPISI_VE_BAKIM.md)
 
+Canlıya geçiş için 1 haftalık teknik görev listesi: [`docs/proje-dokuman/1-HAFTALIK_CANLIYA_GECIS_TEKNIK_GOREV_LISTESI.md`](docs/proje-dokuman/1-HAFTALIK_CANLIYA_GECIS_TEKNIK_GOREV_LISTESI.md)
+
 ---
 
 ## 🔒 Lisans

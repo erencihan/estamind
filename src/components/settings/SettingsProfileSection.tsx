@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import type { RefObject } from 'react'
 import { Camera, Save, Check } from 'lucide-react'
 
@@ -36,15 +37,15 @@ export function SettingsProfileSection({
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-outfit font-semibold mb-4">Profil Bilgileri</h3>
+        <h3 className="text-lg font-dm font-semibold mb-4">Profil Bilgileri</h3>
         <p className="text-gray-400 text-sm mb-6">Kişisel bilgilerinizi ve iletişim bilgilerinizi güncelleyin.</p>
       </div>
 
       <div className="flex items-center gap-6">
         <div className="relative">
-          <div className="w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-3xl font-bold overflow-hidden">
+          <div className="relative w-24 h-24 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white text-3xl font-bold overflow-hidden">
             {avatarPreview ? (
-              <img src={avatarPreview} alt="Profile" className="w-full h-full object-cover" />
+              <Image src={avatarPreview} alt="Profile" fill unoptimized sizes="96px" className="object-cover" />
             ) : (
               profile.name.charAt(0)
             )}

@@ -11,7 +11,7 @@ export function SettingsNotificationsSection({ notificationsEnabled, setNotifica
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-outfit font-semibold mb-4">Bildirim Ayarları</h3>
+        <h3 className="text-lg font-dm font-semibold mb-4">Bildirim Ayarları</h3>
         <p className="text-gray-400 text-sm mb-6">Bildirimleri açıp kapatabilirsiniz.</p>
       </div>
 

@@ -10,7 +10,7 @@ export function RecentReportsPanel() {
   return (
     <div className="glass-card rounded-2xl p-6">
       <div className="flex items-center justify-between mb-6">
-        <h3 className="font-outfit font-semibold text-lg">Son Raporlar</h3>
+        <h3 className="font-dm font-semibold text-lg">Son Raporlar</h3>
         <button type="button" onClick={() => router.push('/dashboard/reports')} className="text-accent text-sm hover:underline">
           Tüm Raporlar
         </button>

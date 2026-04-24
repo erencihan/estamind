@@ -10,14 +10,17 @@
   --success: #10B981;
   --warning: #F97316;
   --error: #EF4444;
-  --glass-bg: rgba(255, 255, 255, 0.08);
-  --glass-border: rgba(255, 255, 255, 0.18);
-  --glass-highlight: rgba(255, 255, 255, 0.25);
-  --dark-surface: #0C1222;
-  --card-bg: #1A2332;
-  --text-primary: #F8FAFC;
-  --text-secondary: #94A3B8;
-  --text-muted: #64748B;
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-muted: rgba(255, 255, 255, 0.18);
+  --dark-surface: #0f1419;
+  --card-bg: #1a2332;
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  /* Eski isimler — bileşen sınıflarıyla uyumluluk */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: var(--border-subtle);
+  --glass-highlight: rgba(255, 255, 255, 0.2);
 }
 
 * {
@@ -40,157 +43,83 @@ body {
 }
 
 body {
-  background: 
-    radial-gradient(ellipse at 20% 20%, rgba(245, 158, 11, 0.08) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 80%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
-    radial-gradient(ellipse at 50% 50%, rgba(15, 23, 42, 1) 0%, rgba(12, 18, 34, 1) 100%);
   min-height: 100vh;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: var(--font-outfit), sans-serif;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-dm), sans-serif;
 }
 
 .font-mono {
   font-family: var(--font-mono), monospace;
 }
 
-/* Glassmorphism */
+/* Düz yüzeyler — cam / blur yok */
 .glass {
-  background: var(--glass-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
 }
 
 .glass-card {
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .glass-card:hover {
-  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0.08) 100%);
-  border-color: var(--glass-highlight);
-  transform: translateY(-2px);
-  transition: all 0.3s ease;
+  border-color: var(--border-muted);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-/* Animated Background Orbs */
-.orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  opacity: 0.5;
-  animation: float 8s ease-in-out infinite;
-}
-
-.orb-1 {
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(245, 158, 11, 0.4) 0%, transparent 70%);
-  top: -100px;
-  left: -100px;
-  animation-delay: 0s;
-}
-
-.orb-2 {
-  width: 300px;
-  height: 300px;
-  background: radial-gradient(circle, rgba(16, 185, 129, 0.3) 0%, transparent 70%);
-  bottom: -50px;
-  right: -50px;
-  animation-delay: -3s;
-}
-
-.orb-3 {
-  width: 200px;
-  height: 200px;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.3) 0%, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation-delay: -5s;
-}
-
-@media (max-width: 640px) {
-  .orb-1 {
-    width: 240px;
-    height: 240px;
-    top: -80px;
-    left: -80px;
-  }
-  .orb-2 {
-    width: 180px;
-    height: 180px;
-    bottom: -40px;
-    right: -40px;
-  }
-  .orb-3 {
-    width: 120px;
-    height: 120px;
-  }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-30px) rotate(5deg); }
-}
-
-/* Gradient Text */
+/* Vurgu metni — tek renk */
 .gradient-text {
-  background: linear-gradient(135deg, #F59E0B 0%, #F97316 50%, #EF4444 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent);
 }
 
 .gradient-text-light {
-  background: linear-gradient(135deg, #FCD34D 0%, #F59E0B 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--accent);
 }
 
-/* Button Styles */
+/* Butonlar — düz dolgu */
 .btn-primary {
-  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
-  color: #0F172A;
+  background: var(--accent);
+  color: var(--primary);
   font-weight: 600;
   padding: 12px 24px;
-  border-radius: 12px;
+  border-radius: 10px;
   border: none;
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: var(--font-outfit), sans-serif;
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  font-family: var(--font-dm), sans-serif;
 }
 
 .btn-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(245, 158, 11, 0.4);
+  background: var(--accent-hover);
 }
 
 .btn-secondary {
   background: var(--glass-bg);
-  backdrop-filter: blur(10px);
   color: var(--text-primary);
   font-weight: 500;
   padding: 12px 24px;
-  border-radius: 12px;
-  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  border: 1px solid var(--border-subtle);
   cursor: pointer;
-  transition: all 0.3s ease;
-  font-family: var(--font-outfit), sans-serif;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+  font-family: var(--font-dm), sans-serif;
 }
 
 .btn-secondary:hover {
-  background: var(--glass-highlight);
-  border-color: var(--glass-highlight);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--border-muted);
 }
 
-/* Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
@@ -209,68 +138,68 @@ h1, h2, h3, h4, h5, h6 {
   background: var(--accent);
 }
 
-/* Input Styles */
 .input-glass {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
   padding: 14px 18px;
   color: var(--text-primary);
   font-size: 16px;
   width: 100%;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .input-glass:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
 }
 
 .input-glass::placeholder {
   color: var(--text-muted);
 }
 
-/* Card Hover Effects */
 .card-hover {
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card-hover:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(245, 158, 11, 0.35);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Shimmer Effect for Loading */
 .shimmer {
   background: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 0.05) 25%,
-    rgba(255, 255, 255, 0.1) 50%,
-    rgba(255, 255, 255, 0.05) 75%
+    rgba(255, 255, 255, 0.04) 25%,
+    rgba(255, 255, 255, 0.08) 50%,
+    rgba(255, 255, 255, 0.04) 75%
   );
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
 
 @keyframes shimmer {
-  0% { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
-/* Select Dropdown Styles */
 select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid var(--glass-border);
-  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 10px;
   padding: 14px 40px 14px 18px;
   color: var(--text-primary);
   font-size: 16px;
   width: 100%;
-  transition: all 0.3s ease;
+  transition: border-color 0.2s ease;
   cursor: pointer;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394A3B8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
   background-repeat: no-repeat;
@@ -281,22 +210,20 @@ select {
 select:focus {
   outline: none;
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+  box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.15);
 }
 
 select:hover {
-  background: rgba(255, 255, 255, 0.08);
-  border-color: var(--glass-highlight);
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: var(--border-muted);
 }
 
-/* Option Styles - Fix for dropdown background */
 option {
   background: var(--card-bg);
   color: var(--text-primary);
   padding: 12px;
 }
 
-/* Firefox specific option styles */
 @-moz-document url-prefix() {
   option {
     background: var(--card-bg);
@@ -304,7 +231,6 @@ option {
   }
 }
 
-/* Dropdown arrow for select */
 select::-ms-expand {
   display: none;
 }

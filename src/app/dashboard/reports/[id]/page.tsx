@@ -1,8 +1,8 @@
 'use client'
 
+import Image from 'next/image'
 import { useState, useEffect } from 'react'
 import { useRouter, useParams } from 'next/navigation'
-import { motion } from 'framer-motion'
 import {
   ArrowLeft,
   FileText,
@@ -92,7 +92,7 @@ export default function ReportDetailPage() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
           <FileText className="w-16 h-16 text-gray-600 mx-auto mb-4" />
-          <h2 className="text-xl font-outfit font-bold mb-2">Rapor Bulunamadı</h2>
+          <h2 className="text-xl font-dm font-bold mb-2">Rapor Bulunamadı</h2>
           <p className="text-gray-400 mb-4">Bu rapor silinmiş veya hiç oluşturulmamış olabilir.</p>
           <button 
             onClick={() => router.push('/dashboard/reports')}
@@ -115,11 +115,7 @@ export default function ReportDetailPage() {
   return (
     <main className="min-h-screen py-24 px-6">
       <div className="max-w-4xl mx-auto">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="glass-card rounded-3xl p-8"
-        >
+        <div className="glass-card rounded-2xl p-8">
           {/* Header */}
           <div className="flex items-center justify-between mb-8">
             <div className="flex items-center gap-4">
@@ -130,7 +126,7 @@ export default function ReportDetailPage() {
                 <ArrowLeft className="w-5 h-5" />
               </button>
               <div>
-                <h1 className="text-2xl font-outfit font-bold">{report.title}</h1>
+                <h1 className="text-2xl font-dm font-bold">{report.title}</h1>
                 <p className="text-gray-400">{report.type} • {createdAt}</p>
               </div>
             </div>
@@ -178,7 +174,7 @@ export default function ReportDetailPage() {
                   <Building2 className="w-6 h-6 text-accent" />
                 </div>
                 <div>
-                  <h2 className="text-xl font-outfit font-bold">Mülk Bilgileri</h2>
+                  <h2 className="text-xl font-dm font-bold">Mülk Bilgileri</h2>
                   <p className="text-sm text-gray-400">Gayrimenkul Detayları</p>
                 </div>
               </div>
@@ -379,7 +375,7 @@ export default function ReportDetailPage() {
           <div className="bg-gradient-to-r from-accent/20 to-warning/20 rounded-2xl p-6 mb-8 border border-accent/30">
             <div className="flex items-center gap-2 mb-4">
               <MapPin className="w-5 h-5 text-accent" />
-              <span className="font-outfit font-semibold">{formData.city} / {formData.district} m² Fiyat Analizi</span>
+              <span className="font-dm font-semibold">{formData.city} / {formData.district} m² Fiyat Analizi</span>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="text-center">
@@ -454,7 +450,7 @@ export default function ReportDetailPage() {
 
           {/* Market Comparison */}
           <div className="bg-surface-card rounded-2xl p-6 mb-6">
-            <h3 className="font-outfit font-semibold mb-4 flex items-center gap-2">
+            <h3 className="font-dm font-semibold mb-4 flex items-center gap-2">
               <BarChart3 className="w-5 h-5 text-blue-400" />
               Pazar Karşılaştırması
             </h3>
@@ -494,7 +490,7 @@ export default function ReportDetailPage() {
 
           {/* Pricing Strategy */}
           <div className="bg-surface-card rounded-2xl p-6 mb-6">
-            <h3 className="font-outfit font-semibold mb-4 flex items-center gap-2">
+            <h3 className="font-dm font-semibold mb-4 flex items-center gap-2">
               <TrendingUp className="w-5 h-5 text-success" />
               Fiyatlandırma Stratejisi
             </h3>
@@ -528,7 +524,7 @@ export default function ReportDetailPage() {
 
           {/* Investment Potential */}
           <div className="bg-surface-card rounded-2xl p-6 mb-6">
-            <h3 className="font-outfit font-semibold mb-4 flex items-center gap-2">
+            <h3 className="font-dm font-semibold mb-4 flex items-center gap-2">
               <DollarSign className="w-5 h-5 text-warning" />
               Yatırım Potansiyeli
             </h3>
@@ -559,7 +555,7 @@ export default function ReportDetailPage() {
 
           {/* Marketing Suggestions */}
           <div className="bg-surface-card rounded-2xl p-6 mb-6">
-            <h3 className="font-outfit font-semibold mb-4 flex items-center gap-2">
+            <h3 className="font-dm font-semibold mb-4 flex items-center gap-2">
               <DollarSign className="w-5 h-5 text-purple-400" />
               Pazarlama Önerileri
             </h3>
@@ -605,7 +601,7 @@ export default function ReportDetailPage() {
 
           {/* Buyer Segments */}
           <div className="bg-surface-card rounded-2xl p-6 mb-8">
-            <h3 className="font-outfit font-semibold mb-4">Potansiyel Alıcı Profilleri</h3>
+            <h3 className="font-dm font-semibold mb-4">Potansiyel Alıcı Profilleri</h3>
             <div className="grid md:grid-cols-3 gap-4">
               {analysisResults.buyerSegments?.map((seg: any, i: number) => (
                 <div key={i} className="bg-primary/50 rounded-xl p-4">
@@ -623,7 +619,7 @@ export default function ReportDetailPage() {
 
           {/* Title Suggestions */}
           <div className="bg-surface-card rounded-2xl p-6 mb-8">
-            <h3 className="font-outfit font-semibold mb-4">İlan Başlığı Önerileri</h3>
+            <h3 className="font-dm font-semibold mb-4">İlan Başlığı Önerileri</h3>
             <div className="space-y-3">
               {analysisResults.titleSuggestions?.map((title: string, i: number) => (
                 <div key={i} className="flex items-center justify-between bg-primary/50 rounded-xl p-4">
@@ -637,7 +633,7 @@ export default function ReportDetailPage() {
           {/* Photo Analysis */}
           {uploadedImages?.length > 0 && (
             <div className="bg-surface-card rounded-2xl p-6 mb-8">
-              <h3 className="font-outfit font-semibold mb-4 flex items-center gap-2">
+              <h3 className="font-dm font-semibold mb-4 flex items-center gap-2">
                 <Camera className="w-5 h-5 text-accent" />
                 Fotoğraf Analizi
               </h3>
@@ -646,12 +642,16 @@ export default function ReportDetailPage() {
                   <p className="text-sm text-gray-400 mb-3">Yüklenen Fotoğraflar</p>
                   <div className="grid grid-cols-3 gap-2">
                     {uploadedImages.slice(0, 6).map((img: string, index: number) => (
-                      <img
-                        key={index}
-                        src={img}
-                        alt={`Fotoğraf ${index + 1}`}
-                        className="w-full h-20 object-cover rounded-lg"
-                      />
+                      <div key={index} className="relative h-20 overflow-hidden rounded-lg">
+                        <Image
+                          src={img}
+                          alt={`Fotoğraf ${index + 1}`}
+                          fill
+                          unoptimized
+                          sizes="(max-width: 768px) 33vw, 15vw"
+                          className="object-cover"
+                        />
+                      </div>
                     ))}
                   </div>
                   <p className="text-xs text-gray-500 mt-2">{uploadedImages.length} fotoğraf yüklendi</p>
@@ -680,7 +680,7 @@ export default function ReportDetailPage() {
             </div>
           )}
 
-        </motion.div>
+        </div>
       </div>
 
       {/* Delete Confirmation Modal */}

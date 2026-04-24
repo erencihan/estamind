@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
 import { useAuth } from '@/context/AuthContext'
 import { settingsNavItems } from '@/components/settings/settingsNav'
 import { PasswordChangeModal } from '@/components/settings/PasswordChangeModal'
@@ -111,13 +110,14 @@ export default function SettingsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-2xl font-outfit font-bold">Ayarlar</h1>
+        <h1 className="text-2xl font-dm font-bold">Ayarlar</h1>
         <p className="text-gray-400">Hesap ayarlarınızı buradan yönetin</p>
       </div>
 
       <div className="grid lg:grid-cols-4 gap-6">
         <div className="lg:col-span-1">
-          <div className="glass-card rounded-2xl p-2">
+          <div className="glass-card rounded-2xl p-2 overflow-x-auto lg:overflow-visible">
+            <div className="flex lg:flex-col gap-2 min-w-max lg:min-w-0">
             {settingsNavItems.map((section) => {
               const { Icon } = section
               return (
@@ -125,7 +125,7 @@ export default function SettingsPage() {
                   key={section.id}
                   type="button"
                   onClick={() => setActiveSection(section.id)}
-                  className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
+                  className={`w-auto lg:w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all whitespace-nowrap ${
                     activeSection === section.id
                       ? 'bg-accent/20 text-accent'
                       : 'text-gray-400 hover:text-white hover:bg-white/5'
@@ -136,46 +136,36 @@ export default function SettingsPage() {
                 </button>
               )
             })}
+            </div>
           </div>
         </div>
 
         <div className="lg:col-span-3">
-          <motion.div
-            key={activeSection}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="glass-card rounded-2xl p-6"
-          >
+          <div key={activeSection} className="glass-card rounded-xl p-4 sm:p-6">
             {renderSection()}
-          </motion.div>
+          </div>
         </div>
       </div>
 
-      <AnimatePresence>
-        {showPasswordModal && (
-          <PasswordChangeModal isOpen={showPasswordModal} onClose={() => setShowPasswordModal(false)} />
-        )}
-      </AnimatePresence>
+      {showPasswordModal && (
+        <PasswordChangeModal isOpen={showPasswordModal} onClose={() => setShowPasswordModal(false)} />
+      )}
 
-      <AnimatePresence>
-        {showDeleteModal && (
-          <DeleteAccountModal
-            isOpen={showDeleteModal}
-            onClose={() => setShowDeleteModal(false)}
-            onConfirm={handleDeleteAccount}
-          />
-        )}
-      </AnimatePresence>
+      {showDeleteModal && (
+        <DeleteAccountModal
+          isOpen={showDeleteModal}
+          onClose={() => setShowDeleteModal(false)}
+          onConfirm={handleDeleteAccount}
+        />
+      )}
 
-      <AnimatePresence>
-        {showPaymentModal && (
-          <PaymentModal
-            isOpen={showPaymentModal}
-            onClose={() => setShowPaymentModal(false)}
-            selectedPlan={selectedPlan}
-          />
-        )}
-      </AnimatePresence>
+      {showPaymentModal && (
+        <PaymentModal
+          isOpen={showPaymentModal}
+          onClose={() => setShowPaymentModal(false)}
+          selectedPlan={selectedPlan}
+        />
+      )}
     </div>
   )
 }

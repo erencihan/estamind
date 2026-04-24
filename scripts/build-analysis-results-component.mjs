@@ -33,7 +33,6 @@ body = body.replace(
 
 const header = `'use client'
 
-import { motion } from 'framer-motion'
 import {
   Brain,
   MapPin,

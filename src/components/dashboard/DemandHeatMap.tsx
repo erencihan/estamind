@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { ArrowUpRight, ArrowDownRight } from 'lucide-react'
 
 export function DemandHeatMap() {
@@ -20,13 +19,13 @@ export function DemandHeatMap() {
   }
 
   return (
-    <div className="glass-card rounded-2xl p-6">
-      <div className="flex items-center justify-between mb-6">
+    <div className="glass-card rounded-xl p-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h3 className="font-outfit font-semibold text-lg">Talep Haritası</h3>
+          <h3 className="font-dm font-semibold text-lg">Talep Haritası</h3>
           <p className="text-sm text-gray-500">Bölgesel analiz</p>
         </div>
-        <button type="button" className="text-accent text-sm hover:underline">
+        <button type="button" className="text-accent text-sm hover:underline self-start sm:self-auto">
           Detaylı
         </button>
       </div>
@@ -34,9 +33,9 @@ export function DemandHeatMap() {
       <div className="space-y-4">
         {areas.map((area, i) => (
           <div key={i} className="space-y-2">
-            <div className="flex items-center justify-between text-sm">
-              <span className="text-gray-300">{area.name}</span>
-              <div className="flex items-center gap-2">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-sm">
+              <span className="text-gray-300 break-words">{area.name}</span>
+              <div className="flex items-center gap-2 shrink-0">
                 <span className={`w-2 h-2 rounded-full ${getDemandColor(area.demand)}`} />
                 <span className="font-mono text-gray-400">{area.demand}%</span>
                 {area.trend === 'up' && <ArrowUpRight className="w-3 h-3 text-success" />}
@@ -44,12 +43,7 @@ export function DemandHeatMap() {
               </div>
             </div>
             <div className="h-2 bg-primary rounded-full overflow-hidden">
-              <motion.div
-                className={`h-full ${getDemandColor(area.demand)} rounded-full`}
-                initial={{ width: 0 }}
-                animate={{ width: `${area.demand}%` }}
-                transition={{ delay: i * 0.1, duration: 0.5 }}
-              />
+              <div className={`h-full ${getDemandColor(area.demand)} rounded-full`} style={{ width: `${area.demand}%` }} />
             </div>
           </div>
         ))}

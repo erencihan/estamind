@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { X, CheckCircle, Shield, CreditCard, CreditCard as CardIcon } from 'lucide-react'
 
 type SelectedPlan = { name: string; price: string } | null
@@ -59,19 +58,8 @@ export function PaymentModal({ isOpen, onClose, selectedPlan }: Props) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative bg-surface-card border border-glass-border rounded-2xl p-6 w-full max-w-md mx-4 z-10"
-      >
+      <div className="absolute inset-0 bg-black/60" onClick={onClose} aria-hidden />
+      <div className="relative bg-surface-card border border-glass-border rounded-xl p-6 w-full max-w-md mx-4 z-10">
         <button
           type="button"
           onClick={onClose}
@@ -82,20 +70,16 @@ export function PaymentModal({ isOpen, onClose, selectedPlan }: Props) {
 
         {success ? (
           <div className="text-center py-8">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4"
-            >
+            <div className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-8 h-8 text-success" />
-            </motion.div>
-            <h3 className="text-xl font-outfit font-bold text-white mb-2">Ödeme Başarılı</h3>
+            </div>
+            <h3 className="text-xl font-dm font-bold text-white mb-2">Ödeme Başarılı</h3>
             <p className="text-gray-400">{selectedPlan?.name} planına başarıyla yükseltildiniz!</p>
           </div>
         ) : (
           <>
             <div className="text-center mb-6">
-              <h3 className="text-xl font-outfit font-bold text-white">Ödeme Yap</h3>
+              <h3 className="text-xl font-dm font-bold text-white">Ödeme Yap</h3>
               {selectedPlan && (
                 <p className="text-gray-400 mt-1">
                   {selectedPlan.name} - {selectedPlan.price}/ay
@@ -203,7 +187,7 @@ export function PaymentModal({ isOpen, onClose, selectedPlan }: Props) {
             </form>
           </>
         )}
-      </motion.div>
+      </div>
     </div>
   )
 }

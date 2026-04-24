@@ -12,7 +12,6 @@ body = body.replace(/\n\s*\)\s*$/m, '\n')
 
 const header = `'use client'
 
-import { motion } from 'framer-motion'
 import {
   Brain,
   Camera,

@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Building, Users, Clock, BarChart3 } from 'lucide-react'
 
 export function AgentMarketStats() {
@@ -12,32 +11,26 @@ export function AgentMarketStats() {
   ]
 
   return (
-    <div className="glass-card rounded-2xl p-6">
-      <div className="flex items-center justify-between mb-6">
+    <div className="glass-card rounded-xl p-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6">
         <div>
-          <h3 className="font-outfit font-semibold text-lg">Piyasa İstatistikleri</h3>
+          <h3 className="font-dm font-semibold text-lg">Piyasa İstatistikleri</h3>
           <p className="text-sm text-gray-500">Emlakçılar için genel veriler</p>
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         {stats.map((stat, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: i * 0.1 }}
-            className="p-4 bg-surface-card rounded-xl"
-          >
+          <div key={i} className="p-4 bg-surface-card rounded-xl border border-glass-border">
             <div className="flex items-center gap-2 mb-2">
-              <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center text-accent">{stat.icon}</div>
+              <div className="w-8 h-8 rounded-lg bg-accent/15 flex items-center justify-center text-accent">{stat.icon}</div>
             </div>
             <p className="text-gray-400 text-xs mb-1">{stat.label}</p>
-            <div className="flex items-center justify-between">
-              <p className="font-mono font-bold text-lg text-white">{stat.value}</p>
-              <span className={`text-xs ${stat.trend === 'up' ? 'text-success' : 'text-error'}`}>{stat.change}</span>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <p className="font-mono font-bold text-lg text-white break-words">{stat.value}</p>
+              <span className={`text-xs shrink-0 ${stat.trend === 'up' ? 'text-success' : 'text-error'}`}>{stat.change}</span>
             </div>
-          </motion.div>
+          </div>
         ))}
       </div>
     </div>

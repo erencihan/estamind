@@ -1,10 +1,9 @@
 import type { Metadata, Viewport } from 'next'
-import { Outfit, DM_Sans, JetBrains_Mono } from 'next/font/google'
+import { DM_Sans, JetBrains_Mono } from 'next/font/google'
 import './globals.css'
 
 import Providers from './providers'
 
-const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 const dmSans = DM_Sans({ subsets: ['latin'], variable: '--font-dm' })
 const jetbrainsMono = JetBrains_Mono({ subsets: ['latin'], variable: '--font-mono' })
 
@@ -17,7 +16,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  themeColor: '#0C1222',
+  themeColor: '#0f1419',
 }
 
 export default function RootLayout({
@@ -26,8 +25,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="tr" className={`${outfit.variable} ${dmSans.variable} ${jetbrainsMono.variable}`}>
-      <body className="antialiased min-h-[100dvh] overflow-x-hidden">
+    <html lang="tr" className={`${dmSans.variable} ${jetbrainsMono.variable}`}>
+      <body className="antialiased min-h-[100dvh] overflow-x-hidden font-dm">
         <Providers>
           {children}
         </Providers>

@@ -1,7 +1,6 @@
 'use client'
 
 import { useState } from 'react'
-import { motion } from 'framer-motion'
 import { Key, X, Eye, EyeOff, CheckCircle } from 'lucide-react'
 
 type Props = { isOpen: boolean; onClose: () => void }
@@ -51,19 +50,8 @@ export function PasswordChangeModal({ isOpen, onClose }: Props) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative bg-surface-card border border-glass-border rounded-2xl p-6 w-full max-w-md mx-4 z-10"
-      >
+      <div className="absolute inset-0 bg-black/60" onClick={onClose} aria-hidden />
+      <div className="relative bg-surface-card border border-glass-border rounded-xl p-6 w-full max-w-md mx-4 z-10">
         <button
           type="button"
           onClick={onClose}
@@ -74,19 +62,15 @@ export function PasswordChangeModal({ isOpen, onClose }: Props) {
 
         {success ? (
           <div className="text-center py-8">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4"
-            >
+            <div className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-8 h-8 text-success" />
-            </motion.div>
-            <h3 className="text-xl font-outfit font-bold text-white mb-2">Şifre Değiştirildi</h3>
+            </div>
+            <h3 className="text-xl font-dm font-bold text-white mb-2">Şifre Değiştirildi</h3>
             <p className="text-gray-400">Şifreniz başarıyla güncellendi</p>
           </div>
         ) : (
           <>
-            <h3 className="text-xl font-outfit font-bold text-white mb-6">Şifre Değiştir</h3>
+            <h3 className="text-xl font-dm font-bold text-white mb-6">Şifre Değiştir</h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -152,15 +136,7 @@ export function PasswordChangeModal({ isOpen, onClose }: Props) {
                 </div>
               </div>
 
-              {error && (
-                <motion.p
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-error text-sm"
-                >
-                  {error}
-                </motion.p>
-              )}
+              {error && <p className="text-error text-sm">{error}</p>}
 
               <button
                 type="submit"
@@ -179,7 +155,7 @@ export function PasswordChangeModal({ isOpen, onClose }: Props) {
             </form>
           </>
         )}
-      </motion.div>
+      </div>
     </div>
   )
 }

@@ -1,9 +1,7 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { FileText, Calendar } from 'lucide-react'
 import { StatsCard } from '@/components/dashboard/StatsCard'
-import { staggerContainer } from '@/components/dashboard/motionVariants'
 import { mockRecentReports } from '@/components/dashboard/dashboardData'
 
 type Props = {
@@ -14,12 +12,7 @@ type Props = {
 
 export function DashboardStatsGrid({ isLite, creditsLeft, monthlyCredits }: Props) {
   return (
-    <motion.div
-      className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8"
-      variants={staggerContainer}
-      initial="initial"
-      animate="animate"
-    >
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
       <StatsCard
         title="Toplam Rapor"
         value={isLite ? String(Math.min(3, mockRecentReports.length)) : '24'}
@@ -34,6 +27,6 @@ export function DashboardStatsGrid({ isLite, creditsLeft, monthlyCredits }: Prop
         icon={<Calendar className="w-6 h-6" />}
         trend="up"
       />
-    </motion.div>
+    </div>
   )
 }

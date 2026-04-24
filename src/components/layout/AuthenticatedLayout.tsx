@@ -67,43 +67,40 @@ function Sidebar({
         />
       )}
       <aside
-        className={`fixed top-0 left-0 h-full w-[280px] glass border-r border-glass-border z-50 transition-transform duration-300 ${
+        className={`fixed top-0 left-0 h-full w-[280px] bg-surface-card border-r border-glass-border z-50 transition-transform duration-300 ${
           isOpen ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
         }`}
       >
         <div className="flex flex-col h-full p-6">
           <div className="flex items-center gap-3 mb-10">
             <Link href="/dashboard" className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent to-warning flex items-center justify-center">
+              <div className="w-10 h-10 rounded-lg bg-accent flex items-center justify-center">
                 <Building2 className="w-6 h-6 text-primary" />
               </div>
-              <span className="text-xl font-outfit font-bold">
+              <span className="text-xl font-dm font-bold">
                 Esta<span className="text-accent">Mind</span>
               </span>
             </Link>
           </div>
-          <nav className="flex-1 space-y-2">
+          <nav className="flex-1 space-y-1">
             {menuItems.map((item) => (
               <button
                 key={item.id}
                 onClick={() => handleNavigation(item)}
-                className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all ${
+                className={`w-full flex items-center gap-3 pl-3 pr-4 py-3 rounded-lg text-left border-l-2 transition-colors ${
                   isActive(item.path)
-                    ? 'bg-accent/20 text-accent'
-                    : 'text-gray-400 hover:text-white hover:bg-white/5'
+                    ? 'border-accent bg-accent/10 text-accent'
+                    : 'border-transparent text-gray-400 hover:text-white hover:bg-white/[0.04]'
                 }`}
               >
                 {item.icon}
                 <span className="font-medium">{item.label}</span>
-                {isActive(item.path) && (
-                  <div className="ml-auto w-2 h-2 rounded-full bg-accent" />
-                )}
               </button>
             ))}
           </nav>
           <div className="pt-6 border-t border-glass-border">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center text-white font-semibold">
+              <div className="w-10 h-10 rounded-full bg-primary-light border border-glass-border flex items-center justify-center text-white font-semibold">
                 {user?.name?.charAt(0).toUpperCase() || 'U'}
               </div>
               <div className="flex-1 min-w-0">
@@ -148,8 +145,8 @@ export default function AuthenticatedLayout({
   return (
     <div className="min-h-screen bg-surface-dark">
       <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} menuItems={menuItems} />
-      <div className="lg:ml-[280px]">
-        <header className="min-h-[3.5rem] sm:h-20 px-4 sm:px-6 py-3 sm:py-0 flex items-center justify-between gap-2 border-b border-glass-border bg-surface-dark/50 backdrop-blur-xl sticky top-0 z-30 pt-[max(0.75rem,env(safe-area-inset-top))] sm:pt-0">
+      <div className="min-w-0 lg:ml-[280px]">
+        <header className="min-h-[3.5rem] sm:h-20 px-4 sm:px-6 py-3 sm:py-0 flex flex-wrap items-center justify-between gap-2 sm:gap-3 border-b border-glass-border bg-surface-dark sticky top-0 z-30 pt-[max(0.75rem,env(safe-area-inset-top))] sm:pt-0">
           {headerSlot ? (
             headerSlot({ onMenuClick: () => setSidebarOpen(true) })
           ) : (
@@ -161,20 +158,21 @@ export default function AuthenticatedLayout({
                 <Menu className="w-6 h-6" />
               </button>
               <div className="hidden md:flex items-center flex-1 min-w-0">
-                <p className="text-gray-300 text-sm font-outfit font-medium leading-snug px-4 py-2.5 rounded-xl bg-surface-card/80 border border-glass-border/80 max-w-2xl">
+                <p className="text-gray-300 text-sm font-dm font-medium leading-snug px-4 py-2.5 rounded-lg bg-surface-card border border-glass-border max-w-2xl">
                   Mülk bilgisi veya ilan linki girin, yapay zeka saniyeler içinde fiyat ve strateji önerisi sunsun.
                 </p>
               </div>
-              <div className="flex items-center gap-3 flex-shrink-0">
-                <Link href="/analysis/new" className="btn-primary text-sm px-4 py-2 flex items-center gap-2">
+              <div className="flex items-center gap-3 flex-shrink-0 ml-auto sm:ml-0">
+                <Link href="/analysis/new" className="btn-primary text-sm px-3 sm:px-4 py-2 flex items-center gap-2 w-full sm:w-auto justify-center">
                   <PlusCircle className="w-4 h-4" />
                   <span className="hidden sm:inline">Yeni Analiz</span>
+                  <span className="sm:hidden">Analiz</span>
                 </Link>
               </div>
             </>
           )}
         </header>
-        <main className="p-4 sm:p-6 max-w-[100vw] overflow-x-hidden pb-[max(1.5rem,env(safe-area-inset-bottom))]">{children}</main>
+        <main className="min-w-0 p-4 sm:p-6 max-w-[100vw] overflow-x-hidden pb-[max(1.5rem,env(safe-area-inset-bottom))]">{children}</main>
       </div>
     </div>
   )

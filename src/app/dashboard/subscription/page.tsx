@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
 import {
   Check,
   Shield,
@@ -105,18 +104,9 @@ function PaymentModal({
   if (!isOpen) return null
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        className="relative bg-surface-card border border-glass-border rounded-2xl p-6 w-full max-w-md mx-4 z-10"
-      >
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      <div className="absolute inset-0 bg-black/60" onClick={onClose} aria-hidden />
+      <div className="relative bg-surface-card border border-glass-border rounded-xl p-4 sm:p-6 w-full max-w-md max-h-[calc(100dvh-2rem)] overflow-y-auto z-10">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-gray-400 hover:text-white"
@@ -126,20 +116,16 @@ function PaymentModal({
 
         {success ? (
           <div className="text-center py-8">
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4"
-            >
+            <div className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4">
               <CheckCircle className="w-8 h-8 text-success" />
-            </motion.div>
-            <h3 className="text-xl font-outfit font-bold text-white mb-2">Ödeme Başarılı</h3>
+            </div>
+            <h3 className="text-xl font-dm font-bold text-white mb-2">Ödeme Başarılı</h3>
             <p className="text-gray-400">{selectedPlan?.name} planına yükseltildiniz!</p>
           </div>
         ) : (
           <>
             <div className="text-center mb-6">
-              <h3 className="text-xl font-outfit font-bold text-white">Ödeme Yap</h3>
+              <h3 className="text-xl font-dm font-bold text-white">Ödeme Yap</h3>
               {selectedPlan && (
                 <p className="text-gray-400 mt-1">
                   {selectedPlan.name} - ₺{selectedPlan.price}/ay
@@ -147,7 +133,7 @@ function PaymentModal({
               )}
             </div>
 
-            <div className="grid grid-cols-2 gap-3 mb-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-6">
               <div className="flex items-center gap-2 rounded-xl bg-success/10 border border-success/30 px-3 py-2">
                 <Shield className="w-5 h-5 text-success flex-shrink-0" />
                 <span className="text-xs text-success font-medium">256-bit SSL</span>
@@ -230,7 +216,7 @@ function PaymentModal({
             </form>
           </>
         )}
-      </motion.div>
+      </div>
     </div>
   )
 }
@@ -258,24 +244,22 @@ export default function SubscriptionPage() {
   return (
     <div className="space-y-8">
       <div>
-        <h1 className="text-2xl font-outfit font-bold">Abonelik Planları</h1>
-        <p className="text-gray-400">Mevcut planınız: <span className="text-accent font-semibold">{planType === 'lite' ? 'Lite' : planType === 'pro' ? 'Pro' : 'Elite'}</span>. İhtiyacınıza göre yükseltin.</p>
+        <h1 className="text-2xl font-dm font-bold">Abonelik Planları</h1>
+        <p className="text-gray-400 break-words">Mevcut planınız: <span className="text-accent font-semibold">{planType === 'lite' ? 'Lite' : planType === 'pro' ? 'Pro' : 'Elite'}</span>. İhtiyacınıza göre yükseltin.</p>
       </div>
 
       <div className="grid md:grid-cols-3 gap-6 items-stretch">
         {PLANS.map((plan) => {
           const isCurrent = plan.current(planType)
           return (
-            <motion.div
+            <div
               key={plan.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className={`relative glass-card rounded-2xl p-6 flex flex-col h-full ${
+              className={`relative glass-card rounded-xl p-6 flex flex-col h-full ${
                 plan.popular ? 'ring-2 ring-accent' : ''
               } ${isCurrent ? 'border-2 border-accent' : ''}`}
             >
               {plan.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-accent text-primary text-xs font-bold rounded-full">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 bg-accent text-primary text-xs font-bold rounded-full whitespace-nowrap">
                   En Popüler
                 </div>
               )}
@@ -285,7 +269,7 @@ export default function SubscriptionPage() {
                 </div>
               )}
               <div className="text-center mb-6 shrink-0">
-                <h3 className="text-xl font-outfit font-bold">{plan.name}</h3>
+                <h3 className="text-xl font-dm font-bold">{plan.name}</h3>
                 <div className="flex items-baseline justify-center gap-1 mt-2 min-h-[2.75rem]">
                   <span className="text-3xl font-mono font-bold">₺{plan.price}</span>
                   <span className="text-gray-500">{plan.period}</span>
@@ -321,7 +305,7 @@ export default function SubscriptionPage() {
                   </button>
                 )}
               </div>
-            </motion.div>
+            </div>
           )
         })}
       </div>

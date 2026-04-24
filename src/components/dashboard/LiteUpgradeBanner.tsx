@@ -1,6 +1,5 @@
 'use client'
 
-import { motion } from 'framer-motion'
 import { Crown, Sparkles, ChevronRight } from 'lucide-react'
 
 type Props = {
@@ -10,9 +9,9 @@ type Props = {
 
 export function LiteUpgradeBanner({ creditsLeft, onUpgrade }: Props) {
   return (
-    <motion.div className="mb-6" initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
+    <div className="mb-6">
       <div
-        className="rounded-2xl p-6 border border-accent/40 bg-gradient-to-r from-accent/20 via-purple-500/20 to-accent/10 cursor-pointer hover:border-accent/60 transition-colors"
+        className="rounded-xl p-6 border border-accent/35 bg-accent/10 cursor-pointer hover:border-accent/50 transition-colors"
         onClick={onUpgrade}
         role="button"
         tabIndex={0}
@@ -24,7 +23,7 @@ export function LiteUpgradeBanner({ creditsLeft, onUpgrade }: Props) {
               <Crown className="w-7 h-7 text-accent" />
             </div>
             <div>
-              <h3 className="font-outfit font-semibold text-lg text-white flex items-center gap-2">
+              <h3 className="font-dm font-semibold text-lg text-white flex items-center gap-2">
                 <Sparkles className="w-5 h-5 text-accent" />
                 Pro veya Elite ile Daha Fazlasına Erişin
               </h3>
@@ -40,6 +39,6 @@ export function LiteUpgradeBanner({ creditsLeft, onUpgrade }: Props) {
           </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   )
 }

@@ -22,7 +22,7 @@ export function SettingsSecuritySection({
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-outfit font-semibold mb-4">Güvenlik Ayarları</h3>
+        <h3 className="text-lg font-dm font-semibold mb-4">Güvenlik Ayarları</h3>
         <p className="text-gray-400 text-sm mb-6">Hesabınızı güvende tutun.</p>
       </div>
 

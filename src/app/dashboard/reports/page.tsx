@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
 import {
   FileText,
   Download,
@@ -185,7 +184,7 @@ EstaMind
       {/* Page Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
         <div>
-          <h1 className="text-2xl font-outfit font-bold">Raporlar</h1>
+          <h1 className="text-2xl font-dm font-bold">Raporlar</h1>
           <p className="text-gray-400">Tüm analiz raporlarınızı görüntüleyin</p>
         </div>
       </div>
@@ -193,13 +192,7 @@ EstaMind
       {/* Stats Grid */}
       <div className="grid grid-cols-2 lg:grid-cols-3 gap-4">
         {stats.map((stat, i) => (
-          <motion.div 
-            key={i}
-            className="glass-card rounded-2xl p-5"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: i * 0.1 }}
-          >
+          <div key={i} className="glass-card rounded-2xl p-5">
             <div className="flex items-start justify-between mb-3">
               <div className="w-10 h-10 rounded-xl bg-accent/20 flex items-center justify-center text-accent">
                 {stat.icon}
@@ -211,8 +204,8 @@ EstaMind
               ) : null}
             </div>
             <p className="text-gray-400 text-sm">{stat.label}</p>
-            <p className="text-xl font-outfit font-bold mt-1">{stat.value}</p>
-          </motion.div>
+            <p className="text-xl font-dm font-bold mt-1">{stat.value}</p>
+          </div>
         ))}
       </div>
 
@@ -231,10 +224,7 @@ EstaMind
             <span className="text-xs bg-primary px-2 py-0.5 rounded-full">{reports.length}</span>
           </div>
           {activeTab === 'active' && (
-            <motion.div 
-              layoutId="activeTab"
-              className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent"
-            />
+            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent" />
           )}
         </button>
         <button
@@ -251,10 +241,7 @@ EstaMind
             <span className="text-xs bg-error/20 px-2 py-0.5 rounded-full text-error">{deletedReports.length}</span>
           </div>
           {activeTab === 'deleted' && (
-            <motion.div 
-              layoutId="activeTab"
-              className="absolute bottom-0 left-0 right-0 h-0.5 bg-error"
-            />
+            <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-error" />
           )}
         </button>
       </div>
@@ -328,11 +315,8 @@ EstaMind
                   filteredReports.map((report, i) => {
                     const isLocked = isLite && i >= LITE_VISIBLE_REPORT_COUNT
                     return (
-                    <motion.tr 
+                    <tr
                       key={report.id}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: i * 0.05 }}
                       className={`transition-colors ${isLocked ? 'opacity-75' : 'hover:bg-surface-card/30'}`}
                     >
                       <td className="p-4">
@@ -393,7 +377,7 @@ EstaMind
                           )}
                         </div>
                       </td>
-                    </motion.tr>
+                    </tr>
                   )})
                 )}
               </tbody>
@@ -416,12 +400,9 @@ EstaMind
                     </td>
                   </tr>
                 ) : (
-                  filteredDeletedReports.map((report, i) => (
-                    <motion.tr 
+                  filteredDeletedReports.map((report) => (
+                    <tr
                       key={report.id}
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      transition={{ delay: i * 0.05 }}
                       className="hover:bg-surface-card/30 transition-colors opacity-75"
                     >
                       <td className="p-4">
@@ -456,7 +437,7 @@ EstaMind
                           </button>
                         </div>
                       </td>
-                    </motion.tr>
+                    </tr>
                   ))
                 )}
               </tbody>

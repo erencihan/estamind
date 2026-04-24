@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
 import { Brain, User, ArrowRight, Eye, EyeOff, Check } from 'lucide-react'
 import { useAuth } from '@/context/AuthContext'
 
@@ -58,31 +57,18 @@ export default function RegisterPage() {
   ]
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-6 py-12">
-      {/* Background */}
-      <div className="fixed inset-0 overflow-hidden pointer-events-none">
-        <div className="orb orb-1" />
-        <div className="orb orb-2" />
-      </div>
-
-      <motion.div 
-        className="w-full max-w-md relative z-10"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-      >
-        {/* Logo */}
+    <main className="min-h-screen flex items-center justify-center px-4 sm:px-6 py-10 sm:py-12">
+      <div className="w-full max-w-md relative z-10">
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-accent to-warning mb-4">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-xl bg-accent mb-4">
             <Brain className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="text-2xl font-outfit font-bold">Esta<span className="text-accent">Mind</span></h1>
+          <h1 className="text-2xl font-dm font-bold">Esta<span className="text-accent">Mind</span></h1>
           <p className="text-gray-400 mt-2">Emlak analiz dünyasına katılın</p>
         </div>
 
-        {/* Register Form */}
-        <div className="glass-card rounded-3xl p-5 sm:p-8">
-          <h2 className="text-xl font-outfit font-semibold mb-6 text-center">Kayıt Ol</h2>
+        <div className="glass-card rounded-2xl p-5 sm:p-8">
+          <h2 className="text-xl font-dm font-semibold mb-6 text-center">Kayıt Ol</h2>
           
           {error && (
             <div className="mb-4 p-3 bg-error/10 border border-error/30 rounded-xl text-error text-sm">
@@ -206,7 +192,7 @@ export default function RegisterPage() {
               />
               <span className="text-sm text-gray-400">
                 <a href="#" className="text-accent hover:underline">Kullanım Şartları</a> ve{' '}
-                <a href="#" className="text-accent hover:underline">Gizlilik Politikası</a>'nı 
+                <a href="#" className="text-accent hover:underline">Gizlilik Politikası</a>&#39;nı 
                 kabul ediyorum
               </span>
             </label>
@@ -243,7 +229,7 @@ export default function RegisterPage() {
             ← Ana sayfaya dön
           </a>
         </p>
-      </motion.div>
+      </div>
     </main>
   )
 }

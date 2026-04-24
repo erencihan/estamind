@@ -1,13 +1,6 @@
 'use client'
 
-import { motion, AnimatePresence } from 'framer-motion'
-import { 
-  AlertTriangle, 
-  X, 
-  Trash2,
-  CheckCircle,
-  RotateCcw
-} from 'lucide-react'
+import { AlertTriangle, X, Trash2, CheckCircle, RotateCcw } from 'lucide-react'
 import { useState } from 'react'
 
 interface DeleteConfirmModalProps {
@@ -27,7 +20,7 @@ export default function DeleteConfirmModal({
   title = 'Raporu Sil',
   message = 'Bu raporu silmek istediğinizden emin misiniz?',
   itemName,
-  isLoading = false
+  isLoading = false,
 }: DeleteConfirmModalProps) {
   const [confirmText, setConfirmText] = useState('')
 
@@ -46,22 +39,10 @@ export default function DeleteConfirmModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={handleClose}
-      />
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative bg-surface-card border border-glass-border rounded-2xl p-6 w-full max-w-md mx-4 z-10"
-      >
-        <button 
-          onClick={handleClose}
-          className="absolute top-4 right-4 text-gray-400 hover:text-white"
+      <div className="absolute inset-0 bg-black/60" onClick={handleClose} aria-hidden />
+      <div className="relative bg-surface-card border border-glass-border rounded-xl p-6 w-full max-w-md mx-4 z-10">
+        <button onClick={handleClose} className="absolute top-4 right-4 text-gray-400 hover:text-white"
+          type="button"
         >
           <X className="w-5 h-5" />
         </button>
@@ -70,13 +51,13 @@ export default function DeleteConfirmModal({
           <div className="w-16 h-16 bg-error/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <AlertTriangle className="w-8 h-8 text-error" />
           </div>
-          <h3 className="text-xl font-outfit font-bold text-white mb-2">{title}</h3>
+          <h3 className="text-xl font-dm font-bold text-white mb-2">{title}</h3>
           <p className="text-gray-400 mb-6">{message}</p>
 
           {itemName && (
             <div className="mb-6">
               <label className="block text-sm text-gray-400 mb-2">
-                Onaylamak için <span className="text-error font-bold">"{itemName}"</span> yazın
+                Onaylamak için <span className="text-error font-bold">&quot;{itemName}&quot;</span> yazın
               </label>
               <input
                 type="text"
@@ -89,17 +70,14 @@ export default function DeleteConfirmModal({
           )}
 
           <div className="flex gap-3">
-            <button
-              onClick={handleClose}
-              className="flex-1 btn-secondary py-3"
-              disabled={isLoading}
-            >
+            <button onClick={handleClose} className="flex-1 btn-secondary py-3" disabled={isLoading} type="button">
               İptal
             </button>
             <button
               onClick={handleConfirm}
               disabled={(itemName && confirmText !== itemName) || isLoading}
               className="flex-1 bg-error hover:bg-error/80 text-white py-3 rounded-xl transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+              type="button"
             >
               {isLoading ? (
                 <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
@@ -112,12 +90,11 @@ export default function DeleteConfirmModal({
             </button>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }
 
-// Success Modal for delete operations
 interface DeleteSuccessModalProps {
   isOpen: boolean
   onClose: () => void
@@ -129,36 +106,21 @@ export function DeleteSuccessModal({
   isOpen,
   onClose,
   onRestore,
-  itemName
+  itemName,
 }: DeleteSuccessModalProps) {
   if (!isOpen) return null
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center">
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
-        onClick={onClose}
-      />
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.95, y: 20 }}
-        animate={{ opacity: 1, scale: 1, y: 0 }}
-        exit={{ opacity: 0, scale: 0.95, y: 20 }}
-        className="relative bg-surface-card border border-glass-border rounded-2xl p-6 w-full max-w-md mx-4 z-10"
-      >
+      <div className="absolute inset-0 bg-black/60" onClick={onClose} aria-hidden />
+      <div className="relative bg-surface-card border border-glass-border rounded-xl p-6 w-full max-w-md mx-4 z-10">
         <div className="text-center">
-          <motion.div 
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4"
-          >
+          <div className="w-16 h-16 bg-success/20 rounded-full flex items-center justify-center mx-auto mb-4">
             <CheckCircle className="w-8 h-8 text-success" />
-          </motion.div>
-          <h3 className="text-xl font-outfit font-bold text-white mb-2">Rapor Silindi</h3>
+          </div>
+          <h3 className="text-xl font-dm font-bold text-white mb-2">Rapor Silindi</h3>
           <p className="text-gray-400 mb-6">
-            "{itemName}" başarıyla silindi. Silinen raporları <span className="text-gray-300">Silinen Raporlar</span> bölümünden görüntüleyebilir ve geri yükleyebilirsiniz.
+            &quot;{itemName}&quot; başarıyla silindi. Silinen raporları <span className="text-gray-300">Silinen Raporlar</span> bölümünden görüntüleyebilir ve geri yükleyebilirsiniz.
           </p>
 
           <div className="flex gap-3">
@@ -166,20 +128,18 @@ export function DeleteSuccessModal({
               <button
                 onClick={onRestore}
                 className="flex-1 bg-warning/20 hover:bg-warning/30 text-warning py-3 rounded-xl transition-colors flex items-center justify-center gap-2"
+                type="button"
               >
                 <RotateCcw className="w-5 h-5" />
                 Geri Yükle
               </button>
             )}
-            <button
-              onClick={onClose}
-              className="flex-1 btn-primary py-3"
-            >
+            <button onClick={onClose} className="flex-1 btn-primary py-3" type="button">
               Kapat
             </button>
           </div>
         </div>
-      </motion.div>
+      </div>
     </div>
   )
 }

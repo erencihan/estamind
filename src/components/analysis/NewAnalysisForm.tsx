@@ -1,6 +1,6 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import Image from 'next/image'
 import {
   Brain,
   Camera,
@@ -44,18 +44,14 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
   return (
     <main className="min-h-screen py-20 sm:py-24 px-4 sm:px-6">
       <div className="max-w-3xl mx-auto w-full min-w-0">
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-center mb-8"
-        >
-          <h1 className="text-2xl sm:text-3xl font-outfit font-bold mb-2">
+        <div className="text-center mb-8">
+          <h1 className="text-2xl sm:text-3xl font-dm font-bold mb-2">
             Yeni <span className="gradient-text">Emlak Analizi</span>
           </h1>
           <p className="text-gray-400">
             Mülk detaylarını girin, AI size anında fiyat ve pazar analizi sunsun
           </p>
-        </motion.div>
+        </div>
 
         <div className="flex items-center justify-center gap-1 sm:gap-4 mb-8 overflow-x-auto pb-1">
           {[1, 2, 3].map(step => (
@@ -74,7 +70,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
 
         <form className="space-y-4">
           <div className="glass-card rounded-3xl p-4 sm:p-6">
-            <h3 className="font-outfit font-semibold mb-4">Mülk Türü</h3>
+            <h3 className="font-dm font-semibold mb-4">Mülk Türü</h3>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3">
               {propertyTypes.map(type => (
                 <button
@@ -95,11 +91,11 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
 
             <div className="mt-6">
               <label className="block text-sm text-gray-400 mb-3">İlan Türü</label>
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   type="button"
                   onClick={() => setFormData(prev => ({ ...prev, listing_type: 'sale' }))}
-                  className={`flex-1 py-3 rounded-xl border font-semibold transition-all ${
+                  className={`flex-1 py-3 rounded-xl border font-semibold transition-all touch-manipulation ${
                     formData.listing_type === 'sale'
                       ? 'border-accent bg-accent/10 text-accent'
                       : 'border-glass-border text-gray-400 hover:border-gray-500'
@@ -110,7 +106,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
                 <button
                   type="button"
                   onClick={() => setFormData(prev => ({ ...prev, listing_type: 'rent' }))}
-                  className={`flex-1 py-3 rounded-xl border font-semibold transition-all ${
+                  className={`flex-1 py-3 rounded-xl border font-semibold transition-all touch-manipulation ${
                     formData.listing_type === 'rent'
                       ? 'border-accent bg-accent/10 text-accent'
                       : 'border-glass-border text-gray-400 hover:border-gray-500'
@@ -123,7 +119,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
           </div>
 
           <div className="glass-card rounded-3xl p-4 sm:p-6">
-            <h3 className="font-outfit font-semibold mb-4">
+            <h3 className="font-dm font-semibold mb-4">
               Temel Bilgiler
             </h3>
             
@@ -246,7 +242,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
           </div>
 
           <div className="glass-card rounded-3xl p-4 sm:p-6">
-            <h3 className="font-outfit font-semibold mb-4">
+            <h3 className="font-dm font-semibold mb-4">
               Bina Detayları
             </h3>
             
@@ -312,7 +308,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
           </div>
 
           <div className="glass-card rounded-3xl p-4 sm:p-6">
-            <h3 className="font-outfit font-semibold mb-4">
+            <h3 className="font-dm font-semibold mb-4">
               Özellikler
             </h3>
             
@@ -338,13 +334,13 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
                   key={feature.key}
                   type="button"
                   onClick={() => toggleFeature(feature.key)}
-                  className={`p-4 rounded-xl border flex items-center gap-3 transition-all ${
+                  className={`p-3 sm:p-4 rounded-xl border flex items-center gap-3 text-left transition-all ${
                     on
                       ? 'border-accent bg-accent/10 text-accent'
                       : 'border-glass-border text-gray-400 hover:border-gray-500'
                   }`}
                 >
-                  <span>{feature.label}</span>
+                  <span className="break-words text-sm sm:text-base">{feature.label}</span>
                 </button>
                 )
               })}
@@ -352,7 +348,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
           </div>
 
           <div className="glass-card rounded-3xl p-4 sm:p-6">
-            <h3 className="font-outfit font-semibold mb-4">Mevcut Fiyat <span className="text-error">*</span></h3>
+            <h3 className="font-dm font-semibold mb-4">Mevcut Fiyat <span className="text-error">*</span></h3>
             <div className="relative">
               <input
                 type="text"
@@ -373,7 +369,7 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
           </div>
 
           <div className="glass-card rounded-3xl p-4 sm:p-6">
-            <h3 className="font-outfit font-semibold mb-4 flex items-center gap-2">
+            <h3 className="font-dm font-semibold mb-4 flex items-center gap-2">
               <Camera className="w-5 h-5 text-accent" />
               İlan Fotoğrafları (Opsiyonel)
             </h3>
@@ -416,11 +412,16 @@ export function NewAnalysisForm({ user, form }: NewAnalysisFormProps) {
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
                   {uploadedImages.map((img, index) => (
                     <div key={index} className="relative group">
-                      <img
-                        src={img}
-                        alt={`Uploaded ${index + 1}`}
-                        className="w-full h-20 object-cover rounded-lg"
-                      />
+                      <div className="relative h-20 overflow-hidden rounded-lg">
+                        <Image
+                          src={img}
+                          alt={`Uploaded ${index + 1}`}
+                          fill
+                          unoptimized
+                          sizes="(max-width: 640px) 50vw, 25vw"
+                          className="object-cover"
+                        />
+                      </div>
                       <button
                         type="button"
                         onClick={() => removeImage(index)}

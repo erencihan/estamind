@@ -12,7 +12,7 @@ export function SettingsSubscriptionSection({ user, onUpgrade }: Props) {
   return (
     <div className="space-y-6">
       <div>
-        <h3 className="text-lg font-outfit font-semibold mb-4">Abonelik</h3>
+        <h3 className="text-lg font-dm font-semibold mb-4">Abonelik</h3>
         <p className="text-gray-400 text-sm mb-6">Mevcut planınızı yönetin.</p>
       </div>
 
@@ -20,7 +20,7 @@ export function SettingsSubscriptionSection({ user, onUpgrade }: Props) {
         <div className="flex items-center justify-between mb-4">
           <div>
             <p className="text-sm text-gray-400">Mevcut Plan</p>
-            <h4 className="text-2xl font-outfit font-bold text-accent">
+            <h4 className="text-2xl font-dm font-bold text-accent">
               {user?.plan_type === 'elite' ? 'Elite' : user?.plan_type === 'pro' ? 'Pro' : 'Lite'} Plan
             </h4>
           </div>
@@ -78,7 +78,7 @@ export function SettingsSubscriptionSection({ user, onUpgrade }: Props) {
             {plan.popular && (
               <span className="text-xs bg-accent text-primary px-2 py-1 rounded-full inline-block">En Popüler</span>
             )}
-            <h4 className="text-lg font-outfit font-bold mt-2">{plan.name}</h4>
+            <h4 className="text-lg font-dm font-bold mt-2">{plan.name}</h4>
             <p className="text-2xl font-mono font-bold min-h-[2.5rem]">
               {plan.price}
               <span className="text-sm text-gray-500">/ay</span>
